@@ -1,11 +1,13 @@
-.PHONY: install clean
+.PHONY: build clean save
 
-install:
+build:
 	set -e; \
 	make clean; \
 	python -m venv venv; \
 	source venv/bin/activate; \
 	pip install --upgrade pip; \
-	pip install -r requirements.txt;
+	pip install -r requirements.in;
 clean:
 	rm -rf venv;
+save:
+	pip freeze > requirements.txt;
